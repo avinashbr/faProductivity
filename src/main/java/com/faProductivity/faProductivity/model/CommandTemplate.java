@@ -22,5 +22,7 @@ public class CommandTemplate {
 	private String templateName;
 	@Column(name="regex")
 	private String regex;
+	@Column(name="bean_name")
+	private String beanName;
 
 }

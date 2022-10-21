@@ -18,6 +18,13 @@ public class GenericExceptionHandler {
 		return new ResponseEntity(ex.getMessage(),HttpStatus.BAD_REQUEST);
 	}
 	
+	@ExceptionHandler(AccountNotFoundException.class)
+	public final ResponseEntity<Object> handleAccountNotFoundException(AccountNotFoundException ex) throws Exception {
+		log.error(ex.getMessage());
+		return new ResponseEntity(ex.getMessage(),HttpStatus.BAD_REQUEST);
+	}
+	
+	
 	@ExceptionHandler(Exception.class)
 	public final ResponseEntity<Object> handleException(Exception ex) throws Exception {		
 		log.error(ex.getMessage());

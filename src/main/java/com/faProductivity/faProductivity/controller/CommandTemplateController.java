@@ -15,25 +15,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.faProductivity.faProductivity.model.CommandTemplate;
 import com.faProductivity.faProductivity.model.ProcessTemplateRequest;
+import com.faProductivity.faProductivity.model.ProcessTemplateResponse;
 import com.faProductivity.faProductivity.service.CommandTemplateService;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/command")
+@CrossOrigin
 
 public class CommandTemplateController {
 	
 	@Autowired
 	private CommandTemplateService commandTemplateService;
 	
-	@PostMapping(value="/listTemplates")
+	@PostMapping(value="/listTemplates",produces= MediaType.APPLICATION_JSON_VALUE,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<CommandTemplate>> listCommandTemplates() {		
 		return commandTemplateService.listCommandTemplates();		
 		
 	}
 	
-	@PostMapping(value="/processTemplate")
-	public ResponseEntity<String> processTemplate(@Valid @RequestBody ProcessTemplateRequest request) {		
+	@PostMapping(value="/processTemplate",produces= MediaType.APPLICATION_JSON_VALUE,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ProcessTemplateResponse> processTemplate(@Valid @RequestBody ProcessTemplateRequest request) {		
 		 return commandTemplateService.processTemplate(request);
 		
 		
